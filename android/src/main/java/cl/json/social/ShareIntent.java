@@ -44,6 +44,10 @@ public abstract class ShareIntent {
             this.chooserTitle = options.getString("title");
         }
 
+        if (ShareIntent.hasValidKey("downloadURL", options) ) {
+            this.getIntent().putExtra("downloadURL", options.getString("downloadURL"));
+        }
+
         if (ShareIntent.hasValidKey("message", options) && ShareIntent.hasValidKey("url", options)) {
             if(this.fileShare.isFile()) {
                 Uri uriFile = this.fileShare.getURI();
